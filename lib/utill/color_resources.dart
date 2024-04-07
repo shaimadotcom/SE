@@ -23,7 +23,7 @@ class ColorResources {
   static const Color primaryOrangeColor = Color(0xffF6670D);
   static const Color swipText = Color(0xfff2eefa);
   static const Color onboarddescription = Color(0xff8e94a6);
-  static const Color shadow = Color(0xffdddde0);
+  static const Color shadow = Color(0xffdddde8);
   static const Color tabBackgroundColor = Color(0xffccffda);
   static const Color pagecolor = Color(0xfff2f2f4);
   static const Color notselected = Color(0xff097526);
