@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:learnjava/providers/profile_provider.dart';
+import 'package:learnjava/screens/auth/update_profile_page.dart';
+import 'package:learnjava/screens/scores/users_scores_page.dart';
 import 'package:learnjava/utill/custom_themes.dart';
 import 'package:provider/provider.dart';
 import '../../../utill/color_resources.dart';
@@ -87,9 +89,9 @@ class _CustomAppBarState extends State<CustomAppBar> {
                               child: Consumer<ProfileProvider>(
                                 builder: (BuildContext context, ProfileProvider profile, Widget? child) {
                                   return RichText(
-                                    text: TextSpan(text: '${(profile.totalPoints ?? 0).toString()} ', style: droidNormal.copyWith(color: ColorResources.red, fontSize: 12,fontWeight: FontWeight.bold,  ), children: [
+                                    text: TextSpan(text: '${(profile.userInfoModel!.total_points ?? 0).toString()} ', style: droidNormal.copyWith(color: ColorResources.red, fontSize: 12,fontWeight: FontWeight.bold,  ), children: [
                                       TextSpan(
-                                        text: 'points',
+                                        text:getTranslated('points', context) ??'points',
                                         style: droidNormal.copyWith(fontSize: 12),
                                       ),
                                     ]),
@@ -110,20 +112,23 @@ class _CustomAppBarState extends State<CustomAppBar> {
                     const Spacer(
                       flex: 1,
                     ),
-                    //(widget.homeBar??false)?
-                    // Container(
-                    //     padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeSmall),
-                    //     margin: const EdgeInsets.symmetric(horizontal: 5),
-                    //     decoration: BoxDecoration(
-                    //         shape: BoxShape.rectangle,
-                    //         borderRadius: const BorderRadius.all(Radius.circular(14)),
-                    //         border: Border.all(color: ColorResources.white,width: 0.75)
-                    //     ),
-                    //     child: Languages()):const SizedBox.shrink(),
+                    (widget.homeBar??false)?
+                    BorderedProfilePictureContainer(
+                          boxConstraints: boxConstraints,
+                          imageUrl: '',
+                      icon:const Icon(Icons.score),
+                      onTap: (){
+                            Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => const UsersscorePage()));
+                          },
+                        ):const SizedBox.shrink(),
+                    SizedBox(width: 5,),
                     (widget.homeBar??false)?
                     BorderedProfilePictureContainer(
                       boxConstraints: boxConstraints,
                       imageUrl: '',
+                      onTap: (){
+                        Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => const UpdateProfilePage()));
+                      },
                       // context
                       //     .read<AuthCubit>()
                       //     .getStudentDetails()

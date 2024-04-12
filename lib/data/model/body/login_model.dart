@@ -1,17 +1,17 @@
 class LoginModel {
-  String? mobile;
+  String? username;
   String? password;
 
-  LoginModel({this.mobile, this.password});
+  LoginModel({this.username, this.password});
 
   LoginModel.fromJson(Map<String, dynamic> json) {
-    mobile = json['mobile'];
+    username = json['username'];
     password = json['password'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['mobile'] = mobile;
+    data['username'] = username;
     data['password'] = password;
     return data;
   }

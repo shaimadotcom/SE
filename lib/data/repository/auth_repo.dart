@@ -76,7 +76,9 @@ class AuthRepo {
   bool isLoggedIn() {
     return sharedPreferences!.containsKey(AppConstants.token);
   }
-
+  Future<bool> logout() async {
+    return clearSharedData();
+  }
 
   Future<bool> clearSharedData() async {
     sharedPreferences!.remove(AppConstants.currency);

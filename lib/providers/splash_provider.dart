@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:learnjava/data/model/response/base/api_response.dart';
 import 'package:learnjava/data/model/response/config_model.dart';
+import 'package:learnjava/providers/profile_provider.dart';
+import 'package:learnjava/utill/app_constants.dart';
+import 'package:provider/provider.dart';
 import '../data/repository/splash_repo.dart';
 import '../helper/api_checker.dart';
 
@@ -14,13 +17,9 @@ class SplashProvider extends ChangeNotifier {
   bool _firstTimeConnectionCheck = true;
   bool _onOff = true;
   bool get onOff => _onOff;
-  bool? _isGuest;
-  String? _shareUrl;
-   ConfigModel? get configModel => _configModel;
+  ConfigModel? get configModel => _configModel;
   bool get hasConnection => _hasConnection;
   bool get fromSetting => _fromSetting;
-  bool? get isGuest => _isGuest;
-  String? get shareURL=>_shareUrl;
   bool get firstTimeConnectionCheck => _firstTimeConnectionCheck;
 
   Future<bool> initConfig(BuildContext context) async {
@@ -28,8 +27,8 @@ class SplashProvider extends ChangeNotifier {
     ApiResponse apiResponse = await splashRepo!.getConfig();
     bool isSuccess;
     if (apiResponse.response != null && apiResponse.response!.statusCode == 200) {
-      _configModel = ConfigModel.fromJson(apiResponse.response!.data['data']);
-       _shareUrl=_configModel!.shareUrl??"";
+      _configModel = ConfigModel.fromJson(apiResponse.response!.data);
+      Provider.of<ProfileProvider>(context,listen: false).setUserProfile(_configModel!.data!.user!);
       isSuccess = true;
     } else {
       isSuccess = false;

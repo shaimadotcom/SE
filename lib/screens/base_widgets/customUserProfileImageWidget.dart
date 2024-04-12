@@ -8,15 +8,19 @@ import '../../utill/images.dart';
 class CustomUserProfileImageWidget extends StatelessWidget {
   final String profileUrl;
   final Color? color;
+  final Icon? icon;
   final BorderRadius? radius;
   const CustomUserProfileImageWidget(
-      {super.key, required this.profileUrl, this.color, this.radius});
+      {super.key, required this.profileUrl, this.color,this.icon, this.radius});
 
   _imageOrDefaultProfileImage() {
     return (profileUrl!="")?
     CachedNetworkImage(
        fit: BoxFit.cover,
        imageUrl: profileUrl,):
+        (icon!=null)?
+            icon
+            :
      SvgPicture.asset(
       Images.user,
       color:

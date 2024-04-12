@@ -1,25 +1,22 @@
 class RegisterModel {
   String? password;
-  String? fName;
-  String? lName;
-  String? mobile;
+  String? username;
+  String? name;
 
-  RegisterModel({this.password, this.fName, this.lName});
+  RegisterModel({this.password, this.username, this.name});
 
   RegisterModel.fromJson(Map<String, dynamic> json) {
 
     password = json['password'];
-    fName = json['f_name'];
-    lName = json['l_name'];
-    mobile = json['mobile'];
+    username = json['username'];
+    name = json['name'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['password'] = password;
-    data['f_name'] = fName;
-    data['l_name'] = lName;
-    data['mobile'] = mobile;
+    data['username'] = username;
+    data['name'] = name;
     return data;
   }
 }

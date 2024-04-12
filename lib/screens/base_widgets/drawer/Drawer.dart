@@ -11,6 +11,7 @@ import 'package:learnjava/screens/base_widgets/drawer/separator.dart';
 
 import 'package:provider/provider.dart';
 
+import '../../../providers/auth_provider.dart';
 import '../../../providers/localization_provider.dart';
 import '../../../utill/app_constants.dart';
 import '../../../utill/color_resources.dart';
@@ -98,18 +99,39 @@ class _CustomDrawerState extends State<CustomDrawer> {
                             },
                           )
                         ),
-                        // DrawerItemWidget(
-                        //     title: "Settings",
-                        //     svgimage: Images.settingsDrawer,
-                        //     color: ColorResources.primaryColor,
-                        //     onPress: () {
-                    
-                        //     }),
-                        // DrawerItemWidget(
-                        //     title:"Help",
-                        //     svgimage: Images.help,
-                        //     color: ColorResources.primaryColor,
-                        //     onPress: () {}),
+                        DrawerItemWidget(
+                          title: "Language",
+                          svgimage: Images.languageDrawer,
+                          color: ColorResources.primaryColor,
+                          onPress: () {
+
+                          },
+                          withtrail: true,
+                          trail: DropdownButtonHideUnderline(
+                            child: DropdownButton2(
+                              dropdownStyleData: DropdownStyleData(
+                                  width: 100, offset: const Offset(-50, 10)),
+                              value:Provider.of<LocalizationProvider>(context, listen: false).getLanguageByCode(Provider.of<LocalizationProvider>(context, listen: false).locale.languageCode).languageName,// selected_lang.toUpperCase(),
+                              onChanged: (String? newValue) {
+                                setState(() {
+                                  Provider.of<LocalizationProvider>(context, listen: false).setLanguage(Locale(
+                                    Provider.of<LocalizationProvider>(context, listen: false).getLanguageByName(newValue!).languageCode!,
+                                    Provider.of<LocalizationProvider>(context, listen: false).getLanguageByName(newValue).countryCode,
+                                  ));
+                                });
+                              },
+                              items: AppConstants.languages.map((value) {
+                                return DropdownMenuItem<String>(
+                                    value: value.languageName!,
+                                    child: Text(value.languageName??"",style: beINNormal.copyWith(
+                                      color: ColorResources.drawertext,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.normal,
+                                    )));
+                              }).toList(),
+                            ),
+                          ),
+                        ),
                         Container(
                           color: Theme.of(context).drawerTheme.backgroundColor,
                           height: 10, //height of container
@@ -120,8 +142,12 @@ class _CustomDrawerState extends State<CustomDrawer> {
                             title:"Logout",
                             svgimage: Images.logout,
                             color: ColorResources.primaryColor,
-                            onPress: () {
-                              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => LoginScreen()));
+                            onPress: () async {
+                              await Provider.of<AuthProvider>(context, listen: false).logout();
+                              setState(() {
+                                Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => LoginScreen()));
+                              });
+                              // Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => LoginScreen()));
                             }),
                       ],
                     ),

@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:learnjava/providers/auth_provider.dart';
 import 'package:learnjava/providers/home_provider.dart';
 import 'package:learnjava/providers/localization_provider.dart';
 import 'package:learnjava/providers/profile_provider.dart';
@@ -31,6 +32,7 @@ Future<void> main() async {
   await di.init();
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (context) => di.sl<SplashProvider>()),
+    ChangeNotifierProvider(create: (context) => di.sl<AuthProvider>()),
     ChangeNotifierProvider(create: (context) => di.sl<LocalizationProvider>()),
     ChangeNotifierProvider(create: (context) => di.sl<HomeProvider>()),
     ChangeNotifierProvider(create: (context) => di.sl<SoundProvider>()),

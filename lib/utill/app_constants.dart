@@ -9,15 +9,14 @@ import 'dimensions.dart';
 class AppConstants {
   static const String appName = 'Musafer';
   static const String appVersion = '1.0';
-  static const String baseUrl = 'http://musafer.sy';
+  static const String baseUrl = 'https://java-learn.labs2030.com';
 
-  static const String registrationUri = '/api/register';
-  static const String registrationGuestUri = '/api/register-guest';
-  static const String loginUri = '/api/login';
+  static const String registrationUri = '/api/users/register';
+  static const String loginUri = '/api/users/login';
   static const String tripDetailsUri = '/api/trip/details/';
   static const String tripReviewUri = '/api/trip/reviews/';
   static const String searchUri = '/api/trips/search?name=';
-  static const String configUri = '/api/settings';
+  static const String configUri = '/api/get-data';
 
   static const String checkPhoneUri = '/api/auth/check-phone';
   static const String resendPhoneOtpUri = '/api/auth/check-phone';
@@ -25,7 +24,12 @@ class AppConstants {
   static const String resetPasswordUri = '/api/auth/reset-password';
   static const String verifyOtpUri = '/api/auth/verify-otp';
 
-  static const String customerUri = '/api/user';
+  static const String customerUri = '/api/get-user-data';
+  static const String updateUser = '/api/users/update';
+  static const String usersSScores = '/api/get-users-data';
+
+  static const String saveProgress = '/api/users/save-progress';
+  static const String allCustomersUri = '/api/get-users-data';
   static const String deleteCustomerAccount = '/api/passenger/account-delete';
   static const String updateProfileUri = '/api/passenger/update-profile';
 

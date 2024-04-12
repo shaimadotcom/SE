@@ -24,15 +24,14 @@ class SplashRepo {
       sharedPreferences!.setBool(AppConstants.intro, true);
       logger.i(sharedPreferences!.get(AppConstants.intro));
     }
-    if(!sharedPreferences!.containsKey(AppConstants.currency)) {
-      sharedPreferences!.setString(AppConstants.currency, '');
-    }
   }
 
   void disableIntro() {
     sharedPreferences!.setBool(AppConstants.intro, false);
   }
-
+  void enableIntro() {
+    sharedPreferences!.setBool(AppConstants.intro, true);
+  }
   bool? showIntro() {
     return sharedPreferences!.getBool(AppConstants.intro);
   }

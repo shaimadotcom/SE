@@ -8,9 +8,11 @@ class BorderedProfilePictureContainer extends StatelessWidget {
   final BoxConstraints boxConstraints;
   final String imageUrl;
   final Function? onTap;
+  final Icon? icon;
   final double? heightAndWidthPercentage;
   const BorderedProfilePictureContainer({
     Key? key,
+    this.icon,
     required this.boxConstraints,
     required this.imageUrl,
     this.heightAndWidthPercentage,
@@ -47,7 +49,7 @@ class BorderedProfilePictureContainer extends StatelessWidget {
         height: boxConstraints.maxWidth *
             (heightAndWidthPercentage ??
                 Dimensions.defaultProfilePictureHeightAndWidthPercentage),
-        child: CustomUserProfileImageWidget(profileUrl: imageUrl),
+        child: CustomUserProfileImageWidget(profileUrl: imageUrl,icon:icon),
       ),
     );
   }
