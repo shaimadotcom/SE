@@ -81,7 +81,7 @@ class DashBoardScreenState extends State<DashBoardScreen>  with TickerProviderSt
     super.initState();
     WidgetsBinding.instance.addObserver(this);
     _animationController.forward();
-    widget.index!=null?changeBottomNavItem(widget.index!):null;
+   // widget.index!=null?changeBottomNavItem(widget.index!):null;
   }
 
   @override
@@ -111,7 +111,7 @@ class DashBoardScreenState extends State<DashBoardScreen>  with TickerProviderSt
               child: IndexedStack(
                 index: _currentSelectedBottomNavIndex,
                 children: [
-                  const HomePage(),
+                   HomePage(index:widget.index??0),
                  // Container(),
                  // _previousSelectedBottmNavIndex == 0
                  //      ? const HomePage()
