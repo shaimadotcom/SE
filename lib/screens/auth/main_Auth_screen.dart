@@ -77,7 +77,7 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin {
       child: AnimatedBuilder(
         animation: _bottomMenuHeightAnimationController,
         builder: (context, child) {
-          final height = MediaQuery.of(context).size.height * (0.525) * _bottomMenuHeightUpAnimation.value - MediaQuery.of(context).size.height * (0.05) * _bottomMenuHeightDownAnimation.value;
+          final height = MediaQuery.of(context).size.height * (0.6) * _bottomMenuHeightUpAnimation.value - MediaQuery.of(context).size.height * (0.05) * _bottomMenuHeightDownAnimation.value;
           return Container(
             width: MediaQuery.of(context).size.width,
             height: height,
@@ -126,12 +126,11 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin {
                                 padding: EdgeInsets.symmetric(
                                   horizontal: MediaQuery.of(context).size.width * (0.1),
                                 ),
-                                child: const Text(
-                                  "Welcome To Java Learning",
+                                child: Text(getTranslated("Welcome To Java Learning", context) ?? "Welcome To Java Learning",
                                   maxLines: 2,
                                   textAlign: TextAlign.center,
                                   overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontSize: 24.0,
                                     fontWeight: FontWeight.w600,
                                     color: ColorResources.primaryOrangeColor,
