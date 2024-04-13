@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
 import 'package:learnjava/providers/profile_provider.dart';
+import 'package:learnjava/providers/splash_provider.dart';
 import 'package:learnjava/screens/home/widget/menu_Item.dart';
 import 'package:learnjava/utill/app_constants.dart';
 import 'package:provider/provider.dart';
@@ -17,8 +18,8 @@ import '../../utill/dimensions.dart';
 import '../../utill/images.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
-
+  const HomePage({Key? key,this.index}) : super(key: key);
+  final int? index;
   @override
   State<HomePage> createState() => _HomePageState();
 }
@@ -67,6 +68,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     _loadData(false);
+    widget.index!=null?_currentSelectedPageIndex=(widget.index!):null;
   }
 
   @override
@@ -82,8 +84,7 @@ class _HomePageState extends State<HomePage> {
               RichText(
                 text: TextSpan(text: '${getTranslated("welcome_message", context) ?? "Welcome"},', style: droidNormal.copyWith(color: ColorResources.white, fontSize: 12), children: [
                   TextSpan(
-                   // text: '  ${Provider.of<ProfileProvider>(context, listen: false).userInfoModel?.fName ?? ""} \n',
-                    text: 'User \n',
+                    text: '  ${Provider.of<ProfileProvider>(context, listen: false).userInfoModel?.name ?? ""} \n',
                     style: droidNormal.copyWith(fontWeight: FontWeight.bold, fontSize: 12),
                   ),
                   TextSpan(
@@ -184,19 +185,19 @@ class _HomePageState extends State<HomePage> {
 
   Future<void> changePage(index) async {
     if(index==1){
-      if((Provider.of<ProfileProvider>(context,listen: false).totalPoints??0)<100){
+      if(!Provider.of<SplashProvider>(context,listen: false).configModel!.data!.canPlayOnline!){
         showDialog(
             context: context,
             builder: (BuildContext context) {
           return AlertDialog(
-          title: const Text('Not enough points'),
-          content: const Text('Your total points is Lower than 100\nCollect 100 points to enter online play.'),
+          title:  Text(getTranslated('Not enough points', context)??'Not enough points'),
+          content:  Text('${getTranslated("Not enough points_message", context)??"Your total points is Lower than Required points to enter online playing\n"} ${getTranslated("Collect", context)??"Collect"} ${Provider.of<SplashProvider>(context,listen: false).configModel!.data!.pointsToOnline??0} ${getTranslated("points to enter online play.", context)??" points to enter online play."}' ),
           actions: <Widget>[
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text('OK'),
+              child: Text(getTranslated('ok',context)??"OK"),
             ),
           ],
         );});
@@ -207,7 +208,6 @@ class _HomePageState extends State<HomePage> {
     });
     _pageController.animateToPage(index, duration: const Duration(milliseconds: 300), curve: Curves.easeInOut);
   }}else{
-        Provider.of<ProfileProvider>(context,listen: false).resetUserPoints();
       Provider.of<HomeProvider>(context, listen: false).changeSelectIndex(index);
       setState(() {
         _currentSelectedPageIndex = index;
