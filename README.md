@@ -1,3 +1,3 @@
-# learnjava
+# JavaLearning
 
 A new Flutter project
