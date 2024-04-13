@@ -28,7 +28,7 @@ class MenuItemContainer extends StatelessWidget {
         onTap(index);
       },
       child: SizedBox(
-        width:Dimensions.homeMenuItemWidth ,
+        width:Dimensions.homeMenuItemWidth+20 ,
         height:Dimensions.homeMenuItemHeight+11,
         child: Column(
           children: [
