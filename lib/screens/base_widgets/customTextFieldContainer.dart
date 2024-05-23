@@ -34,7 +34,7 @@ class CustomTextFieldContainer extends StatelessWidget {
         decoration: InputDecoration(
             suffixIcon: suffixWidget,
             hintStyle:
-                TextStyle(color: ColorResources.primaryColor),
+                TextStyle(color: ColorResources.newblack.withOpacity(0.5)),
             hintText: getTranslated(hintTextKey,context )??hintTextKey,
             border: InputBorder.none,),
       ),

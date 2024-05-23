@@ -84,7 +84,6 @@ class _CustomDrawerState extends State<CustomDrawer> {
                         DrawerItemWidget(
                             title: "Play Sound",
                             svgimage: Images.help,
-                            color: ColorResources.primaryColor,
                             onPress: () {
                             },
                           withtrail: true,
@@ -102,7 +101,6 @@ class _CustomDrawerState extends State<CustomDrawer> {
                         DrawerItemWidget(
                           title: "Language",
                           svgimage: Images.languageDrawer,
-                          color: ColorResources.primaryColor,
                           onPress: () {
 
                           },
@@ -136,12 +134,11 @@ class _CustomDrawerState extends State<CustomDrawer> {
                           color: Theme.of(context).drawerTheme.backgroundColor,
                           height: 10, //height of container
                           child: MySeparator(
-                              color: ColorResources.primaryColor.withOpacity(0.2)),
+                              color: ColorResources.primaryColor.withOpacity(0.9)),
                         ),
                         DrawerItemWidget(
                             title:"Logout",
                             svgimage: Images.logout,
-                            color: ColorResources.primaryColor,
                             onPress: () async {
                               await Provider.of<AuthProvider>(context, listen: false).logout();
                               setState(() {

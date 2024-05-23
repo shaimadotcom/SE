@@ -12,6 +12,7 @@ class SoundProvider extends ChangeNotifier {
   }
 
   final AudioPlayer _audioPlayer = AudioPlayer();
+  final AudioPlayer _answerPlayer = AudioPlayer();
   bool _isSoundPlaying = true;
 
   bool get isSoundPlaying => _isSoundPlaying;
@@ -35,6 +36,16 @@ class SoundProvider extends ChangeNotifier {
       initializeSound();
     });
   }
+  Future<void> initializeRightSound() async {
+    AudioCache.instance = AudioCache(prefix: '');
+    await _answerPlayer.play(AssetSource('animations/right.mp4'),volume: 5);
+  }
+  Future<void> initializeWrongSound() async {
+    AudioCache.instance = AudioCache(prefix: '');
+    await _answerPlayer.play(AssetSource('animations/wrong.mp4'),volume: 5);
+  }
+
+
 
   _loadSSoundStatus() async {
     _isSoundPlaying = sharedPreferences!.getBool(AppConstants.isplaying) ?? true;

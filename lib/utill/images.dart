@@ -25,4 +25,5 @@ class Images {
   static const String help = 'assets/images/help.svg';
   static const String notifications = 'assets/images/notification.svg';
   static const String editProfile = 'assets/images/edit.svg';
+  static const String userProfileAvatar ='assets/images/avatar.png';
 }

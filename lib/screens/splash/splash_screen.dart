@@ -2,9 +2,12 @@ import 'dart:async';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:learnjava/localization/language_constrants.dart';
+import 'package:learnjava/providers/auth_provider.dart';
+import 'package:learnjava/providers/profile_provider.dart';
 import 'package:learnjava/providers/splash_provider.dart';
 import 'package:learnjava/screens/auth/main_Auth_screen.dart';
 import 'package:learnjava/screens/base_widgets/no_internet_screen.dart';
+import 'package:learnjava/screens/dashboard/dashboard_screen.dart';
 import 'package:learnjava/utill/color_resources.dart';
 import 'package:learnjava/utill/images.dart';
 import 'package:provider/provider.dart';
@@ -54,13 +57,28 @@ class SplashScreenState extends State<SplashScreen> {
   }
 
   void _route() {
-         Timer(const Duration(seconds: 1), () async {
+   //
 
-                Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => const AuthScreen()));
+      Provider.of<SplashProvider>(context, listen: false).initSharedPrefData();
+      Timer(const Duration(seconds: 1), () async {
+        if (
+        Provider.of<AuthProvider>(context, listen: false).isLoggedIn()) {
+          Provider.of<AuthProvider>(context, listen: false).updateToken(context);
+          await Provider.of<ProfileProvider>(context, listen: false).getProfile(context);
+          Provider.of<SplashProvider>(context, listen: false).initConfig(context).then((bool isSuccess) {
+            if(isSuccess) {
+              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => const DashBoardScreen()));
+            }
+          });
 
-        });
+        } else  {
+          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => const AuthScreen()));
+        }
+        // }
+        //}
+      });
 
-   // });
+    //});
   }
 
   @override

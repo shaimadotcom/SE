@@ -82,14 +82,14 @@ class _HomePageState extends State<HomePage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               RichText(
-                text: TextSpan(text: '${getTranslated("welcome_message", context) ?? "Welcome"},', style: droidNormal.copyWith(color: ColorResources.white, fontSize: 12), children: [
+                text: TextSpan(text: '${getTranslated("welcome_message", context) ?? "Welcome"},', style: droidNormal.copyWith(color: ColorResources.black, fontSize: 12), children: [
                   TextSpan(
                     text: '  ${Provider.of<ProfileProvider>(context, listen: false).userInfoModel?.name ?? ""} \n',
-                    style: droidNormal.copyWith(fontWeight: FontWeight.bold, fontSize: 12),
+                    style: droidNormal.copyWith(color: ColorResources.black,fontWeight: FontWeight.bold, fontSize: 12),
                   ),
                   TextSpan(
                     text: ' ${getTranslated("welcome_hint", context) ?? "Are you ready for an amazing java learning experience?"}',
-                    style: droidNormal.copyWith(color: ColorResources.white, fontSize: 11),
+                    style: droidNormal.copyWith(color: ColorResources.black, fontSize: 11),
                   )
                 ]),
               ),

@@ -159,7 +159,7 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin {
                                     child: Container(
                                       width: double.infinity,
                                       alignment: Alignment.center,
-                                      child: Text(getTranslated('Login', context) ?? "Login", style: titilliumSemiBold.copyWith(color: ColorResources.white, fontSize: Dimensions.fontSizeLarge)),
+                                      child: Text(getTranslated('Login', context) ?? "Login", style: titilliumSemiBold.copyWith(color: ColorResources.newblack, fontSize: Dimensions.fontSizeLarge)),
                                     ),
                                   )),
 
@@ -185,7 +185,7 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin {
                                     child: Container(
                                       width: double.infinity,
                                       alignment: Alignment.center,
-                                      child: Text(getTranslated('SignUp', context) ?? "SignUp", style: titilliumSemiBold.copyWith(color: ColorResources.primaryColor, fontSize: Dimensions.fontSizeLarge)),
+                                      child: Text(getTranslated('SignUp', context) ?? "SignUp", style: titilliumSemiBold.copyWith(color: ColorResources.newblack, fontSize: Dimensions.fontSizeLarge)),
                                     ),
                                   )),
                             ],

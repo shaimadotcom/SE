@@ -5,9 +5,11 @@ import 'package:provider/provider.dart';
 import 'package:rxdart/rxdart.dart';
 
 import '../../../providers/localization_provider.dart';
+import '../../../providers/profile_provider.dart';
 import '../../../utill/color_resources.dart';
 import '../../../utill/custom_themes.dart';
 import '../../../utill/images.dart';
+import '../../auth/update_profile_page.dart';
 
 class UserProfileDrawerHeader extends StatefulWidget {
   const UserProfileDrawerHeader({super.key});
@@ -50,20 +52,17 @@ class _UserProfileDrawerHeaderState extends State<UserProfileDrawerHeader> {
                 },
                 child: ClipRRect(
                     borderRadius: BorderRadius.circular(100),
-                    child: Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: SvgPicture.asset(
-                        Images.user,
-                      ),
+                    child: Image.asset(
+                      Images.userProfileAvatar,
                     ))),
           ),
           const SizedBox(height: 10),
           RichText(
             // text: TextSpan(text:' ${profile.userInfoModel!.fName ?? ""} ${profile.userInfoModel!.lName ?? ""}\n', style: droidNormal.copyWith(color: ColorResources.white, fontSize: 16,fontWeight: FontWeight.bold), children: [
             text: TextSpan(
-                text: 'User Name',
+                text: Provider.of<ProfileProvider>(context,listen: false).userInfoModel!.name ?? "User Name",
                 style: droidNormal.copyWith(
-                    color: ColorResources.white,
+                    color: ColorResources.black,
                     fontSize: 16,
                     fontWeight: FontWeight.bold),
                 children: [
@@ -85,9 +84,10 @@ class _UserProfileDrawerHeaderState extends State<UserProfileDrawerHeader> {
                       Images.notifications,
                       fit: BoxFit.fill,
                       height: 20,
+                      color: ColorResources.black,
                     ),
                     onPressed: () {
-                      Scaffold.of(context).openDrawer();
+                     // Scaffold.of(context).closeDrawer();
                     },
                   ),
                   IconButton(
@@ -95,9 +95,11 @@ class _UserProfileDrawerHeaderState extends State<UserProfileDrawerHeader> {
                       Images.editProfile,
                       fit: BoxFit.fill,
                       height: 20,
+                      color: ColorResources.black,
                     ),
                     onPressed: () {
-                      Scaffold.of(context).openDrawer();
+                      Scaffold.of(context).closeDrawer();
+                        Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => const UpdateProfilePage()));
                     },
                   ),
                 ],
@@ -119,7 +121,7 @@ class _UserProfileDrawerHeaderState extends State<UserProfileDrawerHeader> {
                     child: SvgPicture.asset(
                       Images.back,
                       fit: BoxFit.fitHeight,
-                      color: ColorResources.white,
+                      color: ColorResources.black,
                     ),
                   )))
           : Positioned(
@@ -133,7 +135,7 @@ class _UserProfileDrawerHeaderState extends State<UserProfileDrawerHeader> {
                     child: SvgPicture.asset(
                       Images.back_r,
                       fit: BoxFit.fitHeight,
-                      color: ColorResources.white,
+                      color: ColorResources.black,
                     ),
                   )))
     ]);

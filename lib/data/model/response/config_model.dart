@@ -75,6 +75,7 @@ class Data {
 class OfflineLevels {
   int? id;
   String? title;
+  String? image;
   String? type;
   String? vidoeUrl;
   String? points;
@@ -85,6 +86,7 @@ class OfflineLevels {
   OfflineLevels(
       {this.id,
         this.title,
+        this.image,
         this.type,
         this.vidoeUrl,
         this.points,
@@ -95,6 +97,7 @@ class OfflineLevels {
   OfflineLevels.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     title = json['title'];
+    image = json['image'];
     type = json['type'];
     vidoeUrl = json['vidoe_url'];
     points = json['points'];
@@ -114,6 +117,7 @@ class OfflineLevels {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
     data['title'] = title;
+    data['image'] = image;
     data['type'] = type;
     data['vidoe_url'] = vidoeUrl;
     data['points'] = points;
@@ -200,6 +204,7 @@ class Questions {
 class OnlineLevels {
   int? id;
   String? title;
+  String? image;
   String? type;
   String? vidoeUrl;
   String? points;
@@ -210,6 +215,7 @@ class OnlineLevels {
   OnlineLevels(
       {this.id,
         this.title,
+        this.image,
         this.type,
         this.vidoeUrl,
         this.points,
@@ -220,6 +226,7 @@ class OnlineLevels {
   OnlineLevels.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     title = json['title'];
+    image = json['image'];
     type = json['type'];
     vidoeUrl = json['vidoe_url'];
     points = json['points'];
@@ -239,6 +246,7 @@ class OnlineLevels {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
     data['title'] = title;
+    data['image'] = image;
     data['type'] = type;
     data['vidoe_url'] = vidoeUrl;
     data['points'] = points;

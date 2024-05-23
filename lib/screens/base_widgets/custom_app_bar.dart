@@ -67,6 +67,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
                       icon: SvgPicture.asset(
                         Images.menu,
                         fit: BoxFit.fill,
+                        color: ColorResources.black,
                       ),
                       onPressed: () {
                         Scaffold.of(context).openDrawer();
@@ -125,7 +126,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
                     (widget.homeBar??false)?
                     BorderedProfilePictureContainer(
                       boxConstraints: boxConstraints,
-                      imageUrl: '',
+                      imageUrl: Images.userProfileAvatar,
                       onTap: (){
                         Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => const UpdateProfilePage()));
                       },
@@ -136,14 +137,14 @@ class _CustomAppBarState extends State<CustomAppBar> {
                     ):
                     IconButton(
                       icon:Provider.of<LocalizationProvider>(context, listen: false).locale.languageCode != "ar" ?
-                      SvgPicture.asset(Images.back_r) : SvgPicture.asset(Images.back),
+                      SvgPicture.asset(Images.back_r,color: ColorResources.newblack) : SvgPicture.asset(Images.back,color: ColorResources.newblack),
                       onPressed: () {
                         Navigator.of(context).pop();
                       },
                     )
                   ]),
-                  const Divider(
-                    color: ColorResources.pagecolor, // color of divider
+                   Divider(
+                    color: ColorResources.newblack.withOpacity(0.5), // color of divider
                     thickness: 0.25, // thickness of divider line
                   ),
                 ],

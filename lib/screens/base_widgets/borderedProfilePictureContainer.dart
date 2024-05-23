@@ -33,13 +33,13 @@ class BorderedProfilePictureContainer extends StatelessWidget {
         onTap?.call();
       },
       child: Container(
-        padding: const EdgeInsets.all(8.0),
+        //padding: const EdgeInsets.all(8.0),
         decoration: BoxDecoration(
-          shape: BoxShape.rectangle,
-          borderRadius: const BorderRadius.all(Radius.circular(13)),
+          shape: BoxShape.circle,
+         // borderRadius: const BorderRadius.all(Radius.circular(13)),
           color: ColorResources.white,
           border: Border.all(
-            width: 1,
+            width: 0.1,
             color: Theme.of(context).scaffoldBackgroundColor,
           ),
         ),

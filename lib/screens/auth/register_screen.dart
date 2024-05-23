@@ -263,10 +263,6 @@ class _RegisterScreenState extends State<RegisterScreen> with TickerProviderStat
                         padding: const EdgeInsets.all(12.0),
                         child: SvgPicture.asset(
                           Images.user,
-                          colorFilter: ColorFilter.mode(
-                            ColorResources.primaryColor,
-                            BlendMode.srcIn,
-                          ),
                         ),
                       ),
                     ),
@@ -282,10 +278,6 @@ class _RegisterScreenState extends State<RegisterScreen> with TickerProviderStat
                         padding: const EdgeInsets.all(12.0),
                         child: SvgPicture.asset(
                           Images.user,
-                          colorFilter: ColorFilter.mode(
-                            ColorResources.primaryColor,
-                            BlendMode.srcIn,
-                          ),
                         ),
                       ),
                     ),
@@ -347,7 +339,7 @@ class _RegisterScreenState extends State<RegisterScreen> with TickerProviderStat
                             child: const Center(
                               child: CircularProgressIndicator(
                                 valueColor: AlwaysStoppedAnimation<Color>(
-                                  ColorResources.primaryColor,
+                                  ColorResources.newblack,
                                 ),
                               ),
                             ))
@@ -371,7 +363,7 @@ class _RegisterScreenState extends State<RegisterScreen> with TickerProviderStat
                               child: Container(
                                 width: double.infinity,
                                 alignment: Alignment.center,
-                                child: Text(getTranslated('SignUp', context) ?? "Sign up", style: titilliumSemiBold.copyWith(color: ColorResources.white, fontSize: Dimensions.fontSizeLarge)),
+                                child: Text(getTranslated('SignUp', context) ?? "Sign up", style: titilliumSemiBold.copyWith(color: ColorResources.newblack, fontSize: Dimensions.fontSizeLarge)),
                               ),
                             ))),
                     const SizedBox(
@@ -388,7 +380,7 @@ class _RegisterScreenState extends State<RegisterScreen> with TickerProviderStat
                               TextSpan(
                                 style: TextStyle(
                                   fontSize: 16.0,
-                                  color: ColorResources.primaryColor,
+                                  color: ColorResources.newblack,
                                 ),
                                 text: getTranslated(
                                   "Have Account?",

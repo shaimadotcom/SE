@@ -75,7 +75,7 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> with TickerProvid
                         getTranslated("update_profile", context) ?? "Update User Info",
                         style: beINNormal.copyWith(
                           fontSize: 14,
-                          color: ColorResources.white,
+                          color: ColorResources.newblack,
                         ),
                       ),
                     ],
@@ -193,10 +193,6 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> with TickerProvid
                   padding: const EdgeInsets.all(12.0),
                   child: SvgPicture.asset(
                     Images.user,
-                    colorFilter: ColorFilter.mode(
-                      ColorResources.primaryColor,
-                      BlendMode.srcIn,
-                    ),
                   ),
                 ),
               ),
@@ -212,10 +208,6 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> with TickerProvid
                   padding: const EdgeInsets.all(12.0),
                   child: SvgPicture.asset(
                     Images.user,
-                    colorFilter: ColorFilter.mode(
-                      ColorResources.primaryColor,
-                      BlendMode.srcIn,
-                    ),
                   ),
                 ),
               ),
@@ -247,7 +239,7 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> with TickerProvid
                           child: const Center(
                             child: CircularProgressIndicator(
                               valueColor: AlwaysStoppedAnimation<Color>(
-                                ColorResources.primaryColor,
+                                ColorResources.newblack,
                               ),
                             ),
                           ))
@@ -271,7 +263,7 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> with TickerProvid
                             child: Container(
                               width: double.infinity,
                               alignment: Alignment.center,
-                              child: Text(getTranslated('save', context) ?? "Save", style: titilliumSemiBold.copyWith(color: ColorResources.white, fontSize: Dimensions.fontSizeLarge)),
+                              child: Text(getTranslated('save', context) ?? "Save", style: titilliumSemiBold.copyWith(color: ColorResources.newblack, fontSize: Dimensions.fontSizeLarge)),
                             ),
                           ))),
               const SizedBox(

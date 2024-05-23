@@ -36,7 +36,7 @@ class DrawerItemWidget extends StatelessWidget {
         leading: icon != null
             ? Icon(
                 icon,
-                color:color?? ColorResources.primaryColor,
+                color:color?? ColorResources.primaryOrangeColor,
               )
             : (width ?? false)
                 ? SizedBox(
@@ -46,14 +46,14 @@ class DrawerItemWidget extends StatelessWidget {
                       svgimage!,
                       // width: 25.w,
                       // height: 25.h,
-                      color: color ?? ColorResources.primaryColor,
+                      color: color ?? ColorResources.primaryOrangeColor,
                     ),
                   )
                 : SvgPicture.asset(
                     svgimage!,
                     // width: 25.w,
                     // height: 25.h,
-                    color: color ?? ColorResources.primaryColor,
+                    color: color ?? ColorResources.primaryOrangeColor,
                   ),
         title: Text(getTranslated(title, context)??title,style:beINNormal.copyWith(
           color: ColorResources.drawertext,

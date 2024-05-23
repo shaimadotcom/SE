@@ -148,7 +148,7 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
         //   },
         child: Text(
           getTranslated("FORGET_PASSWORD", context) ?? "FORGET_PASSWORD",
-          style: TextStyle(color: ColorResources.primaryColor),
+          style: TextStyle(color: ColorResources.newblack),
         ),
         // ),
       ),
@@ -252,7 +252,7 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
                         child: SvgPicture.asset(
                           Images.user,
                           colorFilter: ColorFilter.mode(
-                            ColorResources.primaryColor,
+                            ColorResources.newblack,
                             BlendMode.srcIn,
                           ),
                         ),
@@ -287,7 +287,7 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
                             child: const Center(
                               child: CircularProgressIndicator(
                                 valueColor: AlwaysStoppedAnimation<Color>(
-                                  ColorResources.primaryColor,
+                                  ColorResources.newblack,
                                 ),
                               ),
                             ))
@@ -300,7 +300,7 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
                               borderRadius: BorderRadius.circular(10.0),
                               color: ColorResources.primaryColor,
                               border: Border.all(
-                                color: ColorResources.primaryColor,
+                                color: ColorResources.newblack,
                               ),
                             ),
                             width: MediaQuery.of(context).size.width * 0.7,
@@ -311,7 +311,7 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
                               child: Container(
                                 width: double.infinity,
                                 alignment: Alignment.center,
-                                child: Text(getTranslated('Login', context) ?? "Login", style: titilliumSemiBold.copyWith(color: ColorResources.white, fontSize: Dimensions.fontSizeLarge)),
+                                child: Text(getTranslated('Login', context) ?? "Login", style: titilliumSemiBold.copyWith(color: ColorResources.newblack, fontSize: Dimensions.fontSizeLarge)),
                               ),
                             ))),
                     const SizedBox(
@@ -328,7 +328,7 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
                               TextSpan(
                                 style: TextStyle(
                                   fontSize: 16.0,
-                                  color: ColorResources.primaryColor,
+                                  color: ColorResources.newblack,
                                 ),
                                 text: getTranslated(
                                       "Don't Have Account?",

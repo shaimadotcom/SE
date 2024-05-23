@@ -10,23 +10,22 @@ class CustomUserProfileImageWidget extends StatelessWidget {
   final Color? color;
   final Icon? icon;
   final BorderRadius? radius;
-  const CustomUserProfileImageWidget(
-      {super.key, required this.profileUrl, this.color,this.icon, this.radius});
+  const CustomUserProfileImageWidget({super.key, required this.profileUrl, this.color, this.icon, this.radius});
 
   _imageOrDefaultProfileImage() {
-    return (profileUrl!="")?
-    CachedNetworkImage(
-       fit: BoxFit.cover,
-       imageUrl: profileUrl,):
-        (icon!=null)?
-            icon
-            :
-     SvgPicture.asset(
-      Images.user,
-      color:
-      color,
-      fit: BoxFit.contain,
-    );
+    return (profileUrl != "")
+        ? Image.asset(
+            profileUrl,
+            color: color,
+            fit: BoxFit.fitHeight,
+          )
+        : (icon != null)
+            ? icon
+            : SvgPicture.asset(
+                Images.user,
+                color: color,
+                fit: BoxFit.contain,
+              );
   }
 
   @override
@@ -37,7 +36,8 @@ class CustomUserProfileImageWidget extends StatelessWidget {
             child: _imageOrDefaultProfileImage(),
           )
         : ClipOval(
-            child: _imageOrDefaultProfileImage(),
+            child:
+            _imageOrDefaultProfileImage(),
           );
   }
 }

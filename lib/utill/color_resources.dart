@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 class ColorResources {
   static const Color black = Color(0xff000000);
+  static const Color newblack = Color(0xff000000);
   static const Color black200 = Color(0x80000000);
   static const Color white = Color(0xffFFFFFF);
 
@@ -19,8 +20,8 @@ class ColorResources {
   static const Color imageBg = Color(0xffE2F0FF);
   static const Color menuItem = Color(0xffccccce);
   static const Color textblack = Color(0xff2b2b2b);
-  static const Color primaryColor = Color(0xff57D9A3);
-  static const Color primaryOrangeColor = Color(0xffF6670D);
+  static const Color primaryColor = Color(0xfff7ede1);
+  static const Color primaryOrangeColor = Color(0xff18C4A3);
   static const Color swipText = Color(0xfff2eefa);
   static const Color onboarddescription = Color(0xff8e94a6);
   static const Color shadow = Color(0xffdddde8);

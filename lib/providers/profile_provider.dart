@@ -23,7 +23,7 @@ class ProfileProvider extends ChangeNotifier {
   setUserPoints(ProgressModel progressModel, Function callback) async{
     _isLoading = true;
     ApiResponse apiResponse = await profileRepo!.setUserPoints(progressModel);
-    logger.i(progressModel.toJson());
+    //logger.i(progressModel.toJson());
     _isLoading = false;
     bool isSuccess;
     if (apiResponse.response != null && apiResponse.response!.statusCode == 200) {
