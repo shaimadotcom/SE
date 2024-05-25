@@ -17,6 +17,7 @@ class AppConstants {
   static const String tripReviewUri = '/api/trip/reviews/';
   static const String searchUri = '/api/trips/search?name=';
   static const String configUri = '/api/get-data';
+  static const String userManualUri = '/api/get-user-manual';
 
   static const String checkPhoneUri = '/api/auth/check-phone';
   static const String resendPhoneOtpUri = '/api/auth/check-phone';
@@ -59,6 +60,7 @@ class AppConstants {
   static const String countryCode = 'country_code';
   static const String languageCode = 'language_code';
   static const String isplaying = 'is_playing';
+  static const String iseffectplaying = 'is_effect_playing';
   static const String theme = 'theme';
   static const String topic = 'musafer';
   static const String userAddress = 'user_address';

@@ -6,6 +6,7 @@ import 'package:learnjava/localization/language_constrants.dart';
 import 'package:learnjava/providers/profile_provider.dart';
 import 'package:learnjava/providers/sound_provider.dart';
 import 'package:learnjava/utill/app_constants.dart';
+import 'package:learnjava/utill/images.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../providers/splash_provider.dart';
@@ -25,6 +26,8 @@ class _QuestionViewState extends State<QuestionView> {
   int? currentQuestionIndex;
   List<Questions>? questions;
   List<int>? groupvalue = [4];
+  bool showRight=false;
+  bool showWrong=false;
   @override
   void initState() {
     // TODO: implement initState
@@ -101,7 +104,11 @@ class _QuestionViewState extends State<QuestionView> {
                       });
                     },
                   ),
-                ]),
+showRight?
+              Image.asset(Images.rightGif, height: 100, width: 100):SizedBox(),
+           showWrong?   Image.asset(Images.wrongGif, height: 100, width: 100):SizedBox()
+
+            ]),
                 SizedBox(height: 50),
               ],
             ),
@@ -142,21 +149,58 @@ class _QuestionViewState extends State<QuestionView> {
                            logger.i(groupvalue![currentQuestionIndex! % 4]);
                           if(int.parse(questions![currentQuestionIndex! % 4].correctAnswer!)==groupvalue![currentQuestionIndex! % 4])
                             {
+                              setState(() {
+                                showRight=true;
+                                showWrong=false;
+                              });
                               await Provider.of<SoundProvider>(context, listen: false).initializeRightSound();
                               await Future.delayed(const Duration(seconds: 3));
                               setState(() {
+                                showRight=false;
+                                showWrong=false;
                                 currentQuestionIndex = currentQuestionIndex! % 4 + 1;
                               });
                             }else{
+                            setState(() {
+                              showRight=false;
+                              showWrong=true;
+                            });
                             await Provider.of<SoundProvider>(context, listen: false).initializeWrongSound();
                             await Future.delayed(const Duration(milliseconds: 2500));
                             setState(() {
+                                showRight=false;
+                                showWrong=false;
                               currentQuestionIndex = currentQuestionIndex! % 4 + 1;
                             });
 
                           }
 
                       } else {
+                        if(int.parse(questions![currentQuestionIndex! % 4].correctAnswer!)==groupvalue![currentQuestionIndex! % 4])
+                        {
+                          setState(() {
+                            showRight=true;
+                            showWrong=false;
+                          });
+                          await Provider.of<SoundProvider>(context, listen: false).initializeRightSound();
+                          await Future.delayed(const Duration(seconds: 3));
+                          setState(() {
+                            showRight=false;
+                            showWrong=false;
+                          });
+                        }else{
+                          setState(() {
+                            showRight=false;
+                            showWrong=true;
+                          });
+                          await Provider.of<SoundProvider>(context, listen: false).initializeWrongSound();
+                          await Future.delayed(const Duration(milliseconds: 2500));
+                          setState(() {
+                            showRight=false;
+                            showWrong=false;
+                          });
+
+                        }
                         final correctAnswers = widget.level!.questions!.map<int>((question) => int.parse(question.correctAnswer!)).toList();
                         final userAnswers = [progress.q1, progress.q2, progress.q3, progress.q4];
                         final pointsPerAnswer = int.parse(widget.level!.points.toString());
@@ -189,7 +233,7 @@ class _QuestionViewState extends State<QuestionView> {
                               child: Center(
                                 child: CircularProgressIndicator(
                                   valueColor: AlwaysStoppedAnimation<Color>(
-                                    ColorResources.primaryColor,
+                                    ColorResources.black,
                                   ),
                                 ),
                               ),

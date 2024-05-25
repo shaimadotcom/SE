@@ -18,6 +18,14 @@ class SplashRepo {
       return ApiResponse.withError(ApiErrorHandler.getMessage(e));
     }
   }
+  Future<ApiResponse> getUserManual() async {
+    try {
+      final response = await dioClient!.get(AppConstants.userManualUri);
+      return ApiResponse.withSuccess(response);
+    } catch (e) {
+      return ApiResponse.withError(ApiErrorHandler.getMessage(e));
+    }
+  }
 
   void initSharedData() async {
     if (!sharedPreferences!.containsKey(AppConstants.intro)) {

@@ -26,4 +26,6 @@ class Images {
   static const String notifications = 'assets/images/notification.svg';
   static const String editProfile = 'assets/images/edit.svg';
   static const String userProfileAvatar ='assets/images/avatar.png';
+  static const String rightGif ='assets/animations/right.gif';
+  static const String wrongGif ='assets/animations/wrong.gif';
 }

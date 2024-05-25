@@ -8,6 +8,7 @@ import 'package:learnjava/providers/sound_provider.dart';
 import 'package:learnjava/screens/auth/login_screen.dart';
 import 'package:learnjava/screens/base_widgets/drawer/profile_Drawer_header.dart';
 import 'package:learnjava/screens/base_widgets/drawer/separator.dart';
+import 'package:learnjava/screens/base_widgets/drawer/user_manual.dart';
 
 import 'package:provider/provider.dart';
 
@@ -40,6 +41,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     bool switchval=Provider.of<SoundProvider>(context).isSoundPlaying;
+    bool effectswitchval=Provider.of<SoundProvider>(context).isEffectSoundPlaying;
     return SafeArea(
       child: Container(
         color: ColorResources.white,
@@ -99,6 +101,23 @@ class _CustomDrawerState extends State<CustomDrawer> {
                           )
                         ),
                         DrawerItemWidget(
+                            title: "Play Effects",
+                            svgimage: Images.help,
+                            onPress: () {
+                            },
+                            withtrail: true,
+                            trail:Switch(
+                              value: effectswitchval,
+                              activeColor: ColorResources.primaryColor,
+                              onChanged: (value) {
+                                Provider.of<SoundProvider>(context,listen: false).toggleEffectSound();
+                                effectswitchval=!Provider.of<SoundProvider>(context,listen: false).isEffectSoundPlaying;
+                                setState(() {
+                                });
+                              },
+                            )
+                        ),
+                        DrawerItemWidget(
                           title: "Language",
                           svgimage: Images.languageDrawer,
                           onPress: () {
@@ -136,6 +155,13 @@ class _CustomDrawerState extends State<CustomDrawer> {
                           child: MySeparator(
                               color: ColorResources.primaryColor.withOpacity(0.9)),
                         ),
+                        DrawerItemWidget(
+                            title:"User Manual",
+                            svgimage: Images.learn,
+                            onPress: () async {
+                              Scaffold.of(context).closeDrawer();
+                              Navigator.push(context, MaterialPageRoute(builder: (_) =>const UserManualScreen()));
+                            }),
                         DrawerItemWidget(
                             title:"Logout",
                             svgimage: Images.logout,

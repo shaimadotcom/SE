@@ -11,12 +11,14 @@ import '../helper/api_checker.dart';
 class SplashProvider extends ChangeNotifier {
   final SplashRepo? splashRepo;
   SplashProvider({required this.splashRepo});
+  String? _userManual;
   ConfigModel? _configModel;
   bool _hasConnection = true;
   bool _fromSetting = false;
   bool _firstTimeConnectionCheck = true;
   bool _onOff = true;
   bool get onOff => _onOff;
+  String? get userManual=>_userManual;
   ConfigModel? get configModel => _configModel;
   bool get hasConnection => _hasConnection;
   bool get fromSetting => _fromSetting;
@@ -36,6 +38,27 @@ class SplashProvider extends ChangeNotifier {
       if(apiResponse.error.toString() == 'Connection to API server failed due to internet connection') {
         _hasConnection = false;
       }
+    }
+    notifyListeners();
+    return isSuccess;
+  }
+
+  Future<bool> getUserManual(BuildContext context) async {
+    _hasConnection = true;
+    _userManual="";
+    ApiResponse apiResponse = await splashRepo!.getUserManual();
+    bool isSuccess;
+    if (apiResponse.response != null && apiResponse.response!.statusCode == 200) {
+      _userManual =apiResponse.response!.data["data"];
+      isSuccess = true;
+      notifyListeners();
+    } else {
+      isSuccess = false;
+      ApiChecker.checkApi( apiResponse);
+      if(apiResponse.error.toString() == 'Connection to API server failed due to internet connection') {
+        _hasConnection = false;
+      }
+      notifyListeners();
     }
     notifyListeners();
     return isSuccess;
